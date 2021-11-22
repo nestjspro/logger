@@ -1,0 +1,98 @@
+{
+    "name": "@nestjs.pro/logger",
+    "description": "Logging like a boss. 💪",
+    "version": "0.0.17",
+    "license": "MIT",
+    "homepage": "https://amqp.nestjs.pro",
+    "readme": "README.md",
+    "types": "src/index.ts",
+    "author": {
+        "name": "Matthew Davis",
+        "email": "matthew@matthewdavis.io",
+        "url": "https://matthewdavis.io"
+    },
+    "repository": {
+        "url": "https://github.com/nestjspro/logger.git",
+        "type": "git"
+    },
+    "bugs": {
+        "url": "https://github.com/nestjspro/logger/issues",
+        "email": "support@nestjs.pro"
+    },
+    "contributors": [
+        {
+            "name": "Matthew Davis",
+            "email": "matthew@matthewdavis.io",
+            "url": "https://matthewdavis.io"
+        }
+    ],
+    "maintainers": [
+        {
+            "name": "Matthew Davis",
+            "email": "matthew@matthewdavis.io",
+            "url": "https://matthewdavis.io"
+        }
+    ],
+    "main": "start.sh",
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc -w",
+        "test": "jest --runInBand --detectOpenHandles --forceExit",
+        "test:clearcache": "jest --clearCache",
+        "test:watch": "jest --maxWorkers 1 --watchAll --detectOpenHandles --no-cahe",
+        "test:coverage": "jest --runInBand --coverage --detectOpenHandles --forceExit",
+        "semantic-release": "semantic-release"
+    },
+    "dependencies": {
+        "@elastic/elasticsearch": "^7.15.0",
+        "@nestjs/common": "^8.2.2",
+        "@nestjs/core": "^8.2.2",
+        "chalk": "^4.1.2",
+        "rxjs": "^7.4.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^27.0.2",
+        "@types/node": "^16.11.6",
+        "jest": "^27.3.1",
+        "ts-jest": "^27.0.7",
+        "typescript": "^4.4.4"
+    },
+    "jest": {
+        "rootDir": ".",
+        "moduleFileExtensions": [
+            "js",
+            "ts"
+        ],
+        "testEnvironment": "node",
+        "testRegex": "Test.ts$",
+        "transform": {
+            "^.+\\.ts$": "ts-jest"
+        },
+        "collectCoverage": true,
+        "collectCoverageFrom": [
+            "src/**/{!(ignore-coverage),}*.ts"
+        ],
+        "verbose": true,
+        "coverageThreshold": {
+            "global": {
+                "statements": 90,
+                "branches": 50,
+                "lines": 90
+            }
+        },
+        "coverageReporters": [
+            "lcov",
+            "json",
+            "text"
+        ],
+        "cacheDirectory": ".jest",
+        "coverageDirectory": "./coverage"
+    },
+    "keywords": [
+        "logger",
+        "elasticsearch",
+        "microservices",
+        "nestjs",
+        "nestjs.pro"
+    ]
+}
