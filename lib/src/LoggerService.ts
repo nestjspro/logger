@@ -104,21 +104,41 @@ export class LoggerService {
     }
 
     /**
-     * Helper method to emit a message at the debug level.
+     * Helper method to emit a message at the WARNING level.
      *
      * @param {LogMessage<T> | string | T} message
      */
-    public trace<T>(message: LogMessage<T> | T | string): void {
+    public warning<T>(message: LogMessage<T> | T | string): void {
 
         if (message[ 'message' ]) {
 
-            (message as LogMessage<T>).level = LogLevel.TRACE;
+            (message as LogMessage<T>).level = LogLevel.WARNING;
 
             this.log(message as LogMessage<T>);
 
         } else {
 
-            this.log({ level: LogLevel.TRACE, message });
+            this.log({ level: LogLevel.WARNING, message });
+
+        }
+
+    }
+    /**
+     * Helper method to emit a message at the critical level.
+     *
+     * @param {LogMessage<T> | string | T} message
+     */
+    public critical<T>(message: LogMessage<T> | T | string): void {
+
+        if (message[ 'message' ]) {
+
+            (message as LogMessage<T>).level = LogLevel.CRITICAL;
+
+            this.log(message as LogMessage<T>);
+
+        } else {
+
+            this.log({ level: LogLevel.CRITICAL, message });
 
         }
 
