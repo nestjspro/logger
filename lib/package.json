@@ -41,7 +41,7 @@
         "test:clearcache": "jest --clearCache",
         "test:watch": "jest --maxWorkers 1 --watchAll --detectOpenHandles --no-cahe",
         "test:coverage": "jest --runInBand --coverage --detectOpenHandles --forceExit",
-        "release": "tsc && cd dist && cp ../package*.json . && npm publish --access=public"
+        "release": "tsc && npm version patch && git commit -am'version release' && cd dist && cp ../package*.json . && npm publish --access=public"
     },
     "dependencies": {
         "@elastic/elasticsearch": "^7.15.0",
