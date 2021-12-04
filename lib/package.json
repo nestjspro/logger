@@ -1,7 +1,7 @@
 {
     "name": "@nestjs.pro/logger",
     "description": "Logging like a boss. 💪",
-    "version": "0.0.17",
+    "version": "0.0.1",
     "license": "MIT",
     "homepage": "https://amqp.nestjs.pro",
     "readme": "README.md",
@@ -41,7 +41,7 @@
         "test:clearcache": "jest --clearCache",
         "test:watch": "jest --maxWorkers 1 --watchAll --detectOpenHandles --no-cahe",
         "test:coverage": "jest --runInBand --coverage --detectOpenHandles --forceExit",
-        "semantic-release": "semantic-release"
+        "release": "tsc && cd dist && cp ../package*.json . && npm publish --access=public"
     },
     "dependencies": {
         "@elastic/elasticsearch": "^7.15.0",
