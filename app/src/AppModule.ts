@@ -16,20 +16,21 @@ import { LoggerModule } from '../../lib/dist/LoggerModule';
                 new ConsoleBackend({
 
                     name: 'console',
-                    level: LogLevel.TRACE
+                    level: LogLevel.DEBUG
 
                 }),
 
                 new ElasticsearchBackend({
 
                     name: 'es',
-                    level: LogLevel.TRACE,
+                    level: LogLevel.DEBUG,
                     index: 'test-default',
                     clientOptions: {
 
                         nodes: [ 'http://localhost:9200' ]
 
                     }
+                    
                 })
 
             ]

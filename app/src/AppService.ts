@@ -10,17 +10,20 @@ export class AppService {
 
         loggerService.log({
 
+            config: { backends: 'console' },
+
             level: LogLevel.DEBUG,
             message: {
                 a: 'b',
                 one: 2,
                 test: 'only console'
-            },
-            config: { backends: 'console' }
+            }
 
         });
 
         loggerService.log({
+
+            config: { backends: 'es' },
 
             level: LogLevel.DEBUG,
             index: 'test-1',
@@ -28,32 +31,61 @@ export class AppService {
                 a: 'b',
                 one: 2,
                 test: 'only elasticsearch'
-            },
-            config: { backends: 'es' }
+            }
 
         });
 
         loggerService.log<CustomMessage>({
+
+            config: { backends: [ 'console', 'es' ] },
 
             level: LogLevel.DEBUG,
             index: 'test-1',
             message: {
                 fieldA: 'b',
                 fieldB: 2
-            },
-            config: { backends: [ 'console', 'es' ] }
+            }
 
         });
 
         loggerService.debug<CustomMessage>({
+
             fieldA: 'b',
             fieldB: 2
-        });
-        loggerService.info<CustomMessage>({
-            fieldA: 'b',
-            fieldB: 2
+
         });
 
+        loggerService.info<CustomMessage>({
+
+            fieldA: 'b',
+            fieldB: 2
+
+        });
+
+        loggerService.raw<any>({
+
+            config: { backends: [ 'es' ] },
+            message: {
+
+                '@timestamp': new Date(),
+                a: 'raw message',
+                b: 123
+
+            }
+
+        });
+
+        loggerService.raw<any>({
+
+            message: {
+
+                '@timestamp': new Date(),
+                a: 'raw message',
+                b: 123
+
+            }
+
+        });
 
     }
 

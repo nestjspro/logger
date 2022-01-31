@@ -7,4 +7,6 @@ export interface Backend {
 
     emit<T>(message: LogMessage<T>): void;
 
+    raw<T>(message: LogMessage<T>): void;
+
 }

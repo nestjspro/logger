@@ -41,4 +41,15 @@ export class ElasticsearchBackend implements Backend {
 
     }
 
+    public raw<T>(message: LogMessage<T>): void {
+
+        this.client.index({
+
+            index: message.index || this.config.index,
+            body: message.message
+
+        });
+
+    }
+
 }

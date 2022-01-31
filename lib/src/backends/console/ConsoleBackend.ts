@@ -19,4 +19,10 @@ export class ConsoleBackend implements Backend {
     }
 
 
+    public raw<T>(message: LogMessage<T>): void {
+
+        console.log(JSON.stringify(message));
+
+    }
+
 }

@@ -14,6 +14,43 @@ export class LoggerService {
 
     }
 
+    /**
+     * Emit a raw message and do not form our own object that gets indexed.
+     *
+     * @param message
+     * @param {Array<string>} backends
+     */
+    public raw<T>(message: LogMessage<T>): void {
+
+        if (message.config && message.config.backends) {
+
+            if (Array.isArray(message.config.backends)) {
+
+                for (let i = 0; i < message.config.backends.length; i++) {
+
+                    this.config.backends.filter(backend => backend.config.name === message.config.backends[ i ]).forEach(backend => backend.raw(message));
+
+                }
+
+            } else {
+
+                this.config.backends.filter(backend => backend.config.name === message.config.backends).forEach(backend => backend.raw(message));
+
+            }
+
+        } else {
+
+            this.config.backends.forEach(backend => backend.raw(message));
+
+        }
+
+    }
+
+    /**
+     * Emit a well formed log message.
+     *
+     * @param {LogMessage<T>} message
+     */
     public log<T>(message: LogMessage<T>): void {
 
         if (message.config && message.config.backends) {
@@ -123,6 +160,7 @@ export class LoggerService {
         }
 
     }
+
     /**
      * Helper method to emit a message at the critical level.
      *
